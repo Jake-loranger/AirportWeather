@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AWRecentsVC.swift
 //  AirportWeather
 //
 //  Created by Jacob  Loranger on 6/17/24.
@@ -7,13 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AWRecentsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemGreen
     }
-
-
 }
-
