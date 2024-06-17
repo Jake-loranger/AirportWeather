@@ -16,7 +16,6 @@ class AWDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
         fetchWeatherData(for: airportSymbol)
         
         /* MARK - Temporary airport display */
@@ -50,12 +49,7 @@ class AWDetailsVC: UIViewController {
                 }
                 return
             case .failure(let error):
-                DispatchQueue.main.async {
-                    let alertController = UIAlertController(title: error.rawValue, message: error.localizedDescription, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                    alertController.addAction(action)
-                    self.present(alertController, animated: true, completion: nil)
-                }
+                self.presentErrorOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
                 
                 return
             }

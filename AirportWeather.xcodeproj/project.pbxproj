@@ -20,6 +20,7 @@
 		A190286D2C20E0AA007C3644 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190286C2C20E0AA007C3644 /* NetworkManager.swift */; };
 		A190286F2C20E361007C3644 /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190286E2C20E361007C3644 /* WeatherReport.swift */; };
 		A19028712C20E395007C3644 /* AWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028702C20E395007C3644 /* AWError.swift */; };
+		A19028752C20F60A007C3644 /* UIViewControllers+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A190286C2C20E0AA007C3644 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A190286E2C20E361007C3644 /* WeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReport.swift; sourceTree = "<group>"; };
 		A19028702C20E395007C3644 /* AWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWError.swift; sourceTree = "<group>"; };
+		A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllers+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +72,14 @@
 		A19028442C20B9FD007C3644 /* AirportWeather */ = {
 			isa = PBXGroup;
 			children = (
-				A190286B2C20E086007C3644 /* Managers */,
-				A19028622C20C77C007C3644 /* Custom Views */,
 				A19028612C20C767007C3644 /* Models */,
+				A190286B2C20E086007C3644 /* Managers */,
+				A19028622C20C77C007C3644 /* Views */,
 				A190285A2C20BEF5007C3644 /* Controllers */,
+				A19028722C20F57B007C3644 /* Utilities */,
+				A19028732C20F5D0007C3644 /* Extensions */,
 				A19028592C20BE15007C3644 /* Supporting */,
 				A19028532C20B9FF007C3644 /* Info.plist */,
-				A19028702C20E395007C3644 /* AWError.swift */,
 			);
 			path = AirportWeather;
 			sourceTree = "<group>";
@@ -126,14 +129,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A19028622C20C77C007C3644 /* Custom Views */ = {
+		A19028622C20C77C007C3644 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A19028632C20D2B7007C3644 /* AWTitleLabel.swift */,
 				A19028652C20D3EB007C3644 /* AWSearchTextField.swift */,
 				A19028672C20D4E5007C3644 /* AWButton.swift */,
 			);
-			path = "Custom Views";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A190286B2C20E086007C3644 /* Managers */ = {
@@ -142,6 +145,22 @@
 				A190286C2C20E0AA007C3644 /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		A19028722C20F57B007C3644 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A19028702C20E395007C3644 /* AWError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A19028732C20F5D0007C3644 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A190286A2C20D871007C3644 /* AWDetailsVC.swift in Sources */,
+				A19028752C20F60A007C3644 /* UIViewControllers+Ext.swift in Sources */,
 				A190284A2C20B9FD007C3644 /* AWSearchVC.swift in Sources */,
 				A19028712C20E395007C3644 /* AWError.swift in Sources */,
 				A190286D2C20E0AA007C3644 /* NetworkManager.swift in Sources */,

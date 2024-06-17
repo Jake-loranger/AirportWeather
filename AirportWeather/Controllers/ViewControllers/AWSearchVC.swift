@@ -15,6 +15,7 @@ class AWSearchVC: UIViewController {
     let callToActionButton = AWButton(backgroundColor: .systemGreen, title: "See Weather Details")
     var isUsernameEntered: Bool { return !airportTextField.text!.isEmpty }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -25,6 +26,7 @@ class AWSearchVC: UIViewController {
         configureTextField()
         configureCallToActionButton()
     }
+    
     
     private func configureImageView() {
         view.addSubview(imageView)
@@ -41,6 +43,7 @@ class AWSearchVC: UIViewController {
         ])
     }
     
+    
     private func configureTitleLabel() {
         view.addSubview(titleLabel)
         
@@ -51,6 +54,7 @@ class AWSearchVC: UIViewController {
             titleLabel.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
+    
     
     private func configureTextField() {
         view.addSubview(airportTextField)
@@ -66,9 +70,9 @@ class AWSearchVC: UIViewController {
         ])
     }
     
+    
     private func configureCallToActionButton() {
         view.addSubview(callToActionButton)
-        
         callToActionButton.addTarget(self, action: #selector(pushDetailsVC), for: .touchUpInside)
         
         callToActionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -80,22 +84,16 @@ class AWSearchVC: UIViewController {
         ])
     }
     
+    
     private func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
+    
     @objc func pushDetailsVC() {
         guard isUsernameEntered else {
-            DispatchQueue.main.async {
-                
-                /* TO DO - Create a custom Error view for this */
-                
-                let alertController = UIAlertController(title: "Missing Entry", message: "Airport must be entered", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
-            }
+            self.presentErrorOnMainThread(title: "Missing Entry", message: "Please input an airport symbol", buttonTitle: "Ok")
             return
         }
         
@@ -104,6 +102,7 @@ class AWSearchVC: UIViewController {
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
+
 
 extension AWSearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
