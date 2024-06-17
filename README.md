@@ -15,6 +15,8 @@ An iOS application that displays weather data for user-specified airports
 
 ## Issues Encountered
 1. Dynamic UI element layout based on screen size
+2. Figuring out what values in the JSON response are optional, looked for docs on the api but couldn't find any
+     - When I called "kpm" at one point, it did not return a condition or forecast key-value pair, only windsAloft. I chose to make the forecast and conditions optional in the data model becasue of this
     
 ## Known Issues
 
