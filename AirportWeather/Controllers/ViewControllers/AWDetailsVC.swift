@@ -10,16 +10,56 @@ import UIKit
 class AWDetailsVC: UIViewController {
     
     var airportSymbol: String!
+    let airportTitle = UILabel()
+    let airportTExt = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /* MARK - Temporary Display of Airport symbol */
-        
         view.backgroundColor = .systemBackground
-        let tempAirportDisplay = AWTitleLabel(titleString: airportSymbol, textAlignment: .center, fontSize: 40)
-        tempAirportDisplay.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tempAirportDisplay)
+        
+        fetchWeatherData(for: airportSymbol)
+        
+        /* MARK - Temporary airport display */
+        view.addSubview(airportTitle)
+        airportTitle.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            airportTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            airportTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            airportTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            airportTitle.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        view.addSubview(airportTExt)
+        airportTExt.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            airportTExt.topAnchor.constraint(equalTo: airportTitle.bottomAnchor, constant: 10),
+            airportTExt.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            airportTExt.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            airportTExt.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func fetchWeatherData(for airportSymbol: String) {
+        NetworkManager.shared.getAirportWeatherData(for: airportSymbol) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let weatherData):
+                DispatchQueue.main.async {
+                    self.airportTitle.text = weatherData.report.conditions.ident
+                    self.airportTExt.text = weatherData.report.conditions.text
+                }
+                return
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: error.rawValue, message: error.localizedDescription, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                    alertController.addAction(action)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+                return
+            }
+        }
     }
 
 }

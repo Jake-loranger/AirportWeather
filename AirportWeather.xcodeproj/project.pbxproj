@@ -17,6 +17,9 @@
 		A19028662C20D3EB007C3644 /* AWSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028652C20D3EB007C3644 /* AWSearchTextField.swift */; };
 		A19028682C20D4E5007C3644 /* AWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028672C20D4E5007C3644 /* AWButton.swift */; };
 		A190286A2C20D871007C3644 /* AWDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028692C20D871007C3644 /* AWDetailsVC.swift */; };
+		A190286D2C20E0AA007C3644 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190286C2C20E0AA007C3644 /* NetworkManager.swift */; };
+		A190286F2C20E361007C3644 /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190286E2C20E361007C3644 /* WeatherReport.swift */; };
+		A19028712C20E395007C3644 /* AWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028702C20E395007C3644 /* AWError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		A19028652C20D3EB007C3644 /* AWSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSearchTextField.swift; sourceTree = "<group>"; };
 		A19028672C20D4E5007C3644 /* AWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWButton.swift; sourceTree = "<group>"; };
 		A19028692C20D871007C3644 /* AWDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWDetailsVC.swift; sourceTree = "<group>"; };
+		A190286C2C20E0AA007C3644 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A190286E2C20E361007C3644 /* WeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReport.swift; sourceTree = "<group>"; };
+		A19028702C20E395007C3644 /* AWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +70,13 @@
 		A19028442C20B9FD007C3644 /* AirportWeather */ = {
 			isa = PBXGroup;
 			children = (
+				A190286B2C20E086007C3644 /* Managers */,
 				A19028622C20C77C007C3644 /* Custom Views */,
 				A19028612C20C767007C3644 /* Models */,
 				A190285A2C20BEF5007C3644 /* Controllers */,
 				A19028592C20BE15007C3644 /* Supporting */,
 				A19028532C20B9FF007C3644 /* Info.plist */,
+				A19028702C20E395007C3644 /* AWError.swift */,
 			);
 			path = AirportWeather;
 			sourceTree = "<group>";
@@ -113,6 +121,7 @@
 		A19028612C20C767007C3644 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A190286E2C20E361007C3644 /* WeatherReport.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +134,14 @@
 				A19028672C20D4E5007C3644 /* AWButton.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		A190286B2C20E086007C3644 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A190286C2C20E0AA007C3644 /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,12 +215,15 @@
 			files = (
 				A190286A2C20D871007C3644 /* AWDetailsVC.swift in Sources */,
 				A190284A2C20B9FD007C3644 /* AWSearchVC.swift in Sources */,
+				A19028712C20E395007C3644 /* AWError.swift in Sources */,
+				A190286D2C20E0AA007C3644 /* NetworkManager.swift in Sources */,
 				A19028602C20C0B8007C3644 /* AWRecentsVC.swift in Sources */,
 				A19028462C20B9FD007C3644 /* AppDelegate.swift in Sources */,
 				A19028482C20B9FD007C3644 /* SceneDelegate.swift in Sources */,
 				A190285E2C20BFCA007C3644 /* AWTabBarController.swift in Sources */,
 				A19028682C20D4E5007C3644 /* AWButton.swift in Sources */,
 				A19028662C20D3EB007C3644 /* AWSearchTextField.swift in Sources */,
+				A190286F2C20E361007C3644 /* WeatherReport.swift in Sources */,
 				A19028642C20D2B7007C3644 /* AWTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
