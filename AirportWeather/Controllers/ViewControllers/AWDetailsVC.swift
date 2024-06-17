@@ -12,6 +12,7 @@ class AWDetailsVC: UIViewController {
     var airportSymbol: String!
     let airportTitle = UILabel()
     let airportTExt = UILabel()
+    let date = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,15 @@ class AWDetailsVC: UIViewController {
             airportTExt.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             airportTExt.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        view.addSubview(date)
+        date.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            date.topAnchor.constraint(equalTo: airportTExt.bottomAnchor, constant: 10),
+            date.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            date.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            date.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private func fetchWeatherData(for airportSymbol: String) {
@@ -44,8 +54,9 @@ class AWDetailsVC: UIViewController {
             switch result {
             case .success(let weatherData):
                 DispatchQueue.main.async {
-                    self.airportTitle.text = weatherData.report.conditions.ident
-                    self.airportTExt.text = weatherData.report.conditions.text
+                    self.airportTitle.text = weatherData.report.conditions?.ident
+                    self.airportTExt.text = weatherData.report.conditions?.text
+                    self.date.text = weatherData.report.conditions?.dateIssued
                 }
                 return
             case .failure(let error):
