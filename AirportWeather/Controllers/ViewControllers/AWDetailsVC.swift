@@ -10,43 +10,25 @@ import UIKit
 class AWDetailsVC: UIViewController {
     
     var airportSymbol: String!
-    let airportTitle = UILabel()
-    let airportTExt = UILabel()
-    let date = UILabel()
+    let segmentControlBar = UISegmentedControl()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        title = airportSymbol
+        
         fetchWeatherData(for: airportSymbol)
-        
-        /* MARK - Temporary airport display */
-        view.addSubview(airportTitle)
-        airportTitle.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            airportTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            airportTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            airportTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            airportTitle.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        view.addSubview(airportTExt)
-        airportTExt.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            airportTExt.topAnchor.constraint(equalTo: airportTitle.bottomAnchor, constant: 10),
-            airportTExt.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            airportTExt.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            airportTExt.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        view.addSubview(date)
-        date.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            date.topAnchor.constraint(equalTo: airportTExt.bottomAnchor, constant: 10),
-            date.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            date.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            date.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        configureSegmentControl()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     
     private func fetchWeatherData(for airportSymbol: String) {
         NetworkManager.shared.getAirportWeatherData(for: airportSymbol) { [weak self] result in
@@ -54,17 +36,45 @@ class AWDetailsVC: UIViewController {
             switch result {
             case .success(let weatherData):
                 DispatchQueue.main.async {
-                    self.airportTitle.text = weatherData.report.conditions?.ident
-                    self.airportTExt.text = weatherData.report.conditions?.text
-                    self.date.text = weatherData.report.conditions?.dateIssued
+                    // UI Configuration
                 }
                 return
             case .failure(let error):
                 self.presentErrorOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
-                
                 return
             }
         }
     }
+    
+    
+    private func configureSegmentControl() {
+        view.addSubview(segmentControlBar)
+        
+        segmentControlBar.insertSegment(withTitle: "Conditions", at: 0, animated: true)
+        segmentControlBar.insertSegment(withTitle: "Forecast", at: 1, animated: true)
+        segmentControlBar.selectedSegmentIndex = 0
+        segmentControlBar.backgroundColor = .tertiarySystemBackground
+        segmentControlBar.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+        
+        segmentControlBar.translatesAutoresizingMaskIntoConstraints = false
+        let padding = CGFloat(20)
+        NSLayoutConstraint.activate([
+            segmentControlBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            segmentControlBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            segmentControlBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            segmentControlBar.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+    
 
+    @objc private func segmentChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("Conditions")
+        case 1:
+            print("Forecasts")
+        default:
+            break
+        }
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 class AWSearchVC: UIViewController {
     
     let imageView = UIImageView()
-    let titleLabel = AWTitleLabel(titleString: "Airport Weather", textAlignment: .center, fontSize: 42)
+    let titleLabel = AWTitleLabel(titleString: "AirportWeather", textAlignment: .center, fontSize: 42)
     let airportTextField = AWSearchTextField(placeholder: "Enter an airport symbol")
     let callToActionButton = AWButton(backgroundColor: .systemGreen, title: "See Weather Details")
     var isUsernameEntered: Bool { return !airportTextField.text!.isEmpty }
@@ -19,12 +19,16 @@ class AWSearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationController?.isNavigationBarHidden = true
         
         configureImageView()
         configureTitleLabel()
         configureTextField()
         configureCallToActionButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = true
     }
     
     
