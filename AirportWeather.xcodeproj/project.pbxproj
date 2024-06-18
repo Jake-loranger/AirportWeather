@@ -21,6 +21,9 @@
 		A190286F2C20E361007C3644 /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190286E2C20E361007C3644 /* WeatherReport.swift */; };
 		A19028712C20E395007C3644 /* AWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028702C20E395007C3644 /* AWError.swift */; };
 		A19028752C20F60A007C3644 /* UIViewControllers+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */; };
+		A19028772C2206AC007C3644 /* AWConditionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028762C2206AC007C3644 /* AWConditionDetailView.swift */; };
+		A19028792C220EE7007C3644 /* AWConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028782C220EE7007C3644 /* AWConditionVC.swift */; };
+		A190287B2C22169F007C3644 /* AWForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190287A2C22169F007C3644 /* AWForecastVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		A190286E2C20E361007C3644 /* WeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReport.swift; sourceTree = "<group>"; };
 		A19028702C20E395007C3644 /* AWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWError.swift; sourceTree = "<group>"; };
 		A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllers+Ext.swift"; sourceTree = "<group>"; };
+		A19028762C2206AC007C3644 /* AWConditionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionDetailView.swift; sourceTree = "<group>"; };
+		A19028782C220EE7007C3644 /* AWConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionVC.swift; sourceTree = "<group>"; };
+		A190287A2C22169F007C3644 /* AWForecastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWForecastVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		A190285A2C20BEF5007C3644 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A190287C2C2216A4007C3644 /* ChildViewControllers */,
 				A190285C2C20BF83007C3644 /* TabBarControllers */,
 				A190285B2C20BF72007C3644 /* ViewControllers */,
 			);
@@ -135,6 +142,7 @@
 				A19028632C20D2B7007C3644 /* AWTitleLabel.swift */,
 				A19028652C20D3EB007C3644 /* AWSearchTextField.swift */,
 				A19028672C20D4E5007C3644 /* AWButton.swift */,
+				A19028762C2206AC007C3644 /* AWConditionDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +169,15 @@
 				A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A190287C2C2216A4007C3644 /* ChildViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A190287A2C22169F007C3644 /* AWForecastVC.swift */,
+				A19028782C220EE7007C3644 /* AWConditionVC.swift */,
+			);
+			path = ChildViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +254,8 @@
 				A190284A2C20B9FD007C3644 /* AWSearchVC.swift in Sources */,
 				A19028712C20E395007C3644 /* AWError.swift in Sources */,
 				A190286D2C20E0AA007C3644 /* NetworkManager.swift in Sources */,
+				A190287B2C22169F007C3644 /* AWForecastVC.swift in Sources */,
+				A19028772C2206AC007C3644 /* AWConditionDetailView.swift in Sources */,
 				A19028602C20C0B8007C3644 /* AWRecentsVC.swift in Sources */,
 				A19028462C20B9FD007C3644 /* AppDelegate.swift in Sources */,
 				A19028482C20B9FD007C3644 /* SceneDelegate.swift in Sources */,
@@ -244,6 +263,7 @@
 				A19028682C20D4E5007C3644 /* AWButton.swift in Sources */,
 				A19028662C20D3EB007C3644 /* AWSearchTextField.swift in Sources */,
 				A190286F2C20E361007C3644 /* WeatherReport.swift in Sources */,
+				A19028792C220EE7007C3644 /* AWConditionVC.swift in Sources */,
 				A19028642C20D2B7007C3644 /* AWTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

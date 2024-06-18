@@ -11,7 +11,9 @@ class AWDetailsVC: UIViewController {
     
     var airportSymbol: String!
     let segmentControlBar = UISegmentedControl()
-    
+    var weatherReport: WeatherReport?
+    var conditionsVC: AWConditionVC?
+    var forecastVC: AWForecastVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +37,9 @@ class AWDetailsVC: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let weatherData):
+                self.weatherReport = weatherData
                 DispatchQueue.main.async {
-                    // UI Configuration
+                    self.showConditionsView()
                 }
                 return
             case .failure(let error):
@@ -66,13 +69,58 @@ class AWDetailsVC: UIViewController {
         ])
     }
     
+    private func showConditionsView() {
+        guard let weatherReport = weatherReport else { return }
+        conditionsVC = AWConditionVC(weatherReport: weatherReport)
+        guard let conditionsVC = conditionsVC else { return }
+        addChild(conditionsVC)
+        view.addSubview(conditionsVC.view)
+        
+        conditionsVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            conditionsVC.view.topAnchor.constraint(equalTo: segmentControlBar.bottomAnchor),
+            conditionsVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            conditionsVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            conditionsVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        conditionsVC.didMove(toParent: self)
+    }
+    
+    private func showForecastView() {
+        guard let weatherReport = weatherReport else { return }
+        forecastVC = AWForecastVC(weatherReport: weatherReport)
+        guard let forecastVC = forecastVC else { return }
+        addChild(forecastVC)
+        view.addSubview(forecastVC.view)
+        
+        forecastVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            forecastVC.view.topAnchor.constraint(equalTo: segmentControlBar.bottomAnchor),
+            forecastVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            forecastVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            forecastVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        forecastVC.didMove(toParent: self)
+    }
+    
+    private func removeChildViewController(_ childViewController: UIViewController?) {
+        guard let childViewController = childViewController else { return }
+        childViewController.willMove(toParent: nil)
+        childViewController.view.removeFromSuperview()
+        childViewController.removeFromParent()
+    }
+    
 
     @objc private func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            print("Conditions")
+            showConditionsView()
+            removeChildViewController(forecastVC)
         case 1:
-            print("Forecasts")
+            showForecastView()
+            removeChildViewController(conditionsVC)
         default:
             break
         }
