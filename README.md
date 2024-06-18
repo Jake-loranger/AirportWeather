@@ -15,7 +15,7 @@ An iOS application that displays weather data for user-specified airports
 ### June 18th 
   - 1 hour - UI Planning for Condition/Forecast views, Aviation weather research
   - 1.5 hours - ConditionsVC layout
-  - 2 hours - PersistanceManager, RecentsVC
+  - 2.5 hours - PersistanceManager, RecentsVC
 
 ## Issues Encountered
 1. Dynamic UI element layout based on screen size
@@ -26,6 +26,7 @@ An iOS application that displays weather data for user-specified airports
 
 ## Known Issues
 1. UI Layout in landscape mode needs reconfiguration
+2. Can add the same airport twice if you exclude the K or do lowercase vs. uppercase
 
 ## References/Libraries
 ### Pervious Code Bases
