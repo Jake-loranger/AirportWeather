@@ -21,6 +21,7 @@ class AWDetailsVC: UIViewController {
         title = airportSymbol
         
         fetchWeatherData(for: airportSymbol)
+        saveToRecents(for: airportSymbol)
         configureSegmentControl()
     }
     
@@ -46,6 +47,19 @@ class AWDetailsVC: UIViewController {
                 self.presentErrorOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
                 return
             }
+        }
+    }
+    
+    private func saveToRecents(for airportSymbol: String) {
+        let recentAirport = RecentAirport(airportSymbol: airportSymbol)
+        
+        PersistanceManager.updateRecentsWith(airportSymbol: recentAirport, actionType: .add) { [weak self] error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                self.presentErrorOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+            return
         }
     }
     

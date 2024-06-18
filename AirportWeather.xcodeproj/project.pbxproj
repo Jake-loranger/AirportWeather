@@ -24,6 +24,9 @@
 		A19028772C2206AC007C3644 /* AWConditionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028762C2206AC007C3644 /* AWConditionDetailView.swift */; };
 		A19028792C220EE7007C3644 /* AWConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028782C220EE7007C3644 /* AWConditionVC.swift */; };
 		A190287B2C22169F007C3644 /* AWForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190287A2C22169F007C3644 /* AWForecastVC.swift */; };
+		A190287E2C2220F2007C3644 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190287D2C2220F2007C3644 /* PersistanceManager.swift */; };
+		A19028802C222985007C3644 /* RecentAirport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190287F2C222985007C3644 /* RecentAirport.swift */; };
+		A19028822C222D3E007C3644 /* AWTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028812C222D3E007C3644 /* AWTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		A19028762C2206AC007C3644 /* AWConditionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionDetailView.swift; sourceTree = "<group>"; };
 		A19028782C220EE7007C3644 /* AWConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionVC.swift; sourceTree = "<group>"; };
 		A190287A2C22169F007C3644 /* AWForecastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWForecastVC.swift; sourceTree = "<group>"; };
+		A190287D2C2220F2007C3644 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		A190287F2C222985007C3644 /* RecentAirport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAirport.swift; sourceTree = "<group>"; };
+		A19028812C222D3E007C3644 /* AWTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				A190286E2C20E361007C3644 /* WeatherReport.swift */,
+				A190287F2C222985007C3644 /* RecentAirport.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +150,7 @@
 				A19028652C20D3EB007C3644 /* AWSearchTextField.swift */,
 				A19028672C20D4E5007C3644 /* AWButton.swift */,
 				A19028762C2206AC007C3644 /* AWConditionDetailView.swift */,
+				A19028812C222D3E007C3644 /* AWTableCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				A190286C2C20E0AA007C3644 /* NetworkManager.swift */,
+				A190287D2C2220F2007C3644 /* PersistanceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -249,9 +258,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19028802C222985007C3644 /* RecentAirport.swift in Sources */,
 				A190286A2C20D871007C3644 /* AWDetailsVC.swift in Sources */,
 				A19028752C20F60A007C3644 /* UIViewControllers+Ext.swift in Sources */,
 				A190284A2C20B9FD007C3644 /* AWSearchVC.swift in Sources */,
+				A190287E2C2220F2007C3644 /* PersistanceManager.swift in Sources */,
+				A19028822C222D3E007C3644 /* AWTableCell.swift in Sources */,
 				A19028712C20E395007C3644 /* AWError.swift in Sources */,
 				A190286D2C20E0AA007C3644 /* NetworkManager.swift in Sources */,
 				A190287B2C22169F007C3644 /* AWForecastVC.swift in Sources */,
