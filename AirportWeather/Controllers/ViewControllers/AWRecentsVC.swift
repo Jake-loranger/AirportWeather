@@ -74,6 +74,16 @@ extension AWRecentsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let recent = recentAirports[indexPath.row]
+        let detailsVC = AWDetailsVC()
+        detailsVC.airportSymbol = recent.airportSymbol
+        
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         

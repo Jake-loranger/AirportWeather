@@ -21,7 +21,6 @@ class AWDetailsVC: UIViewController {
         title = airportSymbol
         
         fetchWeatherData(for: airportSymbol)
-        saveToRecents(for: airportSymbol)
         configureSegmentControl()
     }
     
@@ -39,11 +38,15 @@ class AWDetailsVC: UIViewController {
             switch result {
             case .success(let weatherData):
                 self.weatherReport = weatherData
+                self.saveToRecents(for: self.airportSymbol)
                 DispatchQueue.main.async {
                     self.showConditionsView()
                 }
                 return
             case .failure(let error):
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
                 self.presentErrorOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
                 return
             }

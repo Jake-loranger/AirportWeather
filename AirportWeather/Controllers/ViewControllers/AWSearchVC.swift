@@ -102,7 +102,7 @@ class AWSearchVC: UIViewController {
         }
         
         let detailsVC = AWDetailsVC()
-        detailsVC.airportSymbol = airportTextField.text
+        detailsVC.airportSymbol = airportTextField.text?.uppercased()
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
