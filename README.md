@@ -12,6 +12,10 @@ An iOS application that displays weather data for user-specified airports
   - 2 hours - UI Planning in Figma, Data Investigation, Project/ReadME Setup
   - 2 hours - UITabBar, SearchVC
   - 2 hours - NetworkManager, WeatherReport Data Model, SegmentControlBar
+### June 18th 
+  - 1 hour - UI Planning for Condition/Forecast views, Aviation weather research
+  - 1.5 hours - ConditionsVC layout, Segment
+  - 
 
 ## Issues Encountered
 1. Dynamic UI element layout based on screen size
