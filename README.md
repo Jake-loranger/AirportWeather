@@ -14,14 +14,16 @@ An iOS application that displays weather data for user-specified airports
   - 2 hours - NetworkManager, WeatherReport Data Model, SegmentControlBar
 ### June 18th 
   - 1 hour - UI Planning for Condition/Forecast views, Aviation weather research
-  - 1.5 hours - ConditionsVC layout, Segment
-  - 
+  - 1.5 hours - ConditionsVC layout
+  - 2 hours - PersistanceManager, RecentsVC
 
 ## Issues Encountered
 1. Dynamic UI element layout based on screen size
 2. Figuring out what values in the JSON response are optional, looked for docs on the api but couldn't find any
      - When I called "kpm" at one point, it did not return a condition or forecast key-value pair, only windsAloft. I chose to make the forecast and conditions optional in the data model becasue of this
-    
+3. TableView's borders wouldn't reach the leadingAnchor of the view
+4. Checking whether a recent was already within the userDefaults and if so moving it to the beginning of the array. Right now airports can be saved multiple times to the userDefaults
+
 ## Known Issues
 1. UI Layout in landscape mode needs reconfiguration
 
