@@ -14,7 +14,7 @@ An iOS application that displays weather data for user-specified airports
   - 2 hours - NetworkManager, WeatherReport Data Model, SegmentControlBar
 ### June 18th 
   - 1 hour - UI Planning for Condition/Forecast views, Aviation weather research
-  - 2 hours - ConditionsVC layout
+  - 2 hours - ConditionsVC layout, Data Formatting for display
   - 3 hours - PersistanceManager, RecentsVC
 
 ## Issues Encountered
