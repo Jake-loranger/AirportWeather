@@ -44,7 +44,7 @@ class AWConditionVC: UIViewController {
     private func layoutUI() {
         view.addSubview(vStackView)
         
-        let padding = CGFloat(32)
+        let padding = CGFloat(30)
         
         vStackView.axis = .vertical
         vStackView.distribution = .equalSpacing

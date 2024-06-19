@@ -1,5 +1,5 @@
 //
-//  AWTableCell.swift
+//  AWRecentCell.swift
 //  AirportWeather
 //
 //  Created by Jacob  Loranger on 6/18/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class AWTableCell: UITableViewCell {
+class AWRecentCell: UITableViewCell {
 
-    static let reuseID = "AWTableCell"
-    let cellTitle = UILabel()
+    static let reuseID = "AWRecentCell"
+    let cellTitle = AWTitleLabel(textAlignment: .left, fontSize: 18)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

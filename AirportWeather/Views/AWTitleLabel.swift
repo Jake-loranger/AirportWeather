@@ -18,11 +18,13 @@ class AWTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(titleString: String, textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    init(titleString: String? = nil, textAlignment: NSTextAlignment, fontSize: CGFloat, weight: UIFont.Weight = .bold) {
         super.init(frame: .zero)
-        self.text = titleString
+        if titleString != nil {
+            self.text = titleString
+        }
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+        self.font = UIFont.systemFont(ofSize: fontSize, weight: weight)
         configure()
     }
     

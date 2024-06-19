@@ -43,7 +43,7 @@ class AWConditionDetailView: UIView {
         
         detailValue.translatesAutoresizingMaskIntoConstraints = false
         detailValue.font = UIFont.systemFont(ofSize: 12)
-        detailValue.numberOfLines = 2
+        detailValue.numberOfLines = 3
         detailValue.lineBreakMode = .byWordWrapping
         
         NSLayoutConstraint.activate([

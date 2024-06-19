@@ -40,13 +40,13 @@ enum PersistanceManager {
                 
                 switch actionType {
                 case .add:
-                    guard !retrievedRecents.contains(recent) else {
-                        return
+                    if retrievedRecents.contains(recent) {
+                        retrievedRecents.removeAll { $0.airportSymbol == recent.airportSymbol }
                     }
                     retrievedRecents.append(recent)
                     
                     if retrievedRecents.count > 20 {
-                        retrievedRecents.removeLast()
+                        retrievedRecents.removeFirst()
                     }
                     
                 case .remove:

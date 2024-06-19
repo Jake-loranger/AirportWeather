@@ -11,7 +11,6 @@ class AWRecentsVC: UIViewController {
     
     let tableView = UITableView()
     var recentAirports: [RecentAirport] = []
-//    = [RecentAirport(airportSymbol: "KPWM"), RecentAirport(airportSymbol: "KAUS")]  // Should I just put KPWM & KAUS here instead of work with adding it in the PersistanceManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +51,12 @@ class AWRecentsVC: UIViewController {
     private func configureTableView() {
         view.addSubview(tableView)
         
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.frame = view.bounds
         tableView.rowHeight = 100
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(AWTableCell.self, forCellReuseIdentifier: AWTableCell.reuseID)
+        tableView.register(AWRecentCell.self, forCellReuseIdentifier: AWRecentCell.reuseID)
     }
 }
 
@@ -68,7 +66,7 @@ extension AWRecentsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AWTableCell.reuseID) as! AWTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AWRecentCell.reuseID) as! AWRecentCell
         let recentAirport = recentAirports[indexPath.row]
         cell.set(airport: recentAirport)
         return cell
