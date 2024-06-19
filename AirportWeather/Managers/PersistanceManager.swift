@@ -12,7 +12,9 @@ enum PersistanceActionType {
 }
 
 enum PersistanceManager {
+    
     static private let defaults = UserDefaults.standard
+    
     
     static func initializeDefaults() {
         guard defaults.object(forKey: "airports") == nil else {
@@ -24,8 +26,11 @@ enum PersistanceManager {
             RecentAirport(airportSymbol: "KPWM")
         ]
         
-        save(recents: defaultRecents)
+        if let error = save(recents: defaultRecents) {
+            print("Error saving default recents: \(error)")
+        }
     }
+    
     
     static func updateRecentsWith(airportSymbol recent: RecentAirport, actionType: PersistanceActionType, completed: @escaping (AWError?) -> Void) {
         retrieveRecents { result in
@@ -38,7 +43,6 @@ enum PersistanceManager {
                     guard !retrievedRecents.contains(recent) else {
                         return
                     }
-                    
                     retrievedRecents.append(recent)
                     
                     if retrievedRecents.count > 20 {
@@ -57,11 +61,9 @@ enum PersistanceManager {
         }
     }
     
+    
     static func retrieveRecents(completed: @escaping (Result<[RecentAirport], AWError>) -> Void) {
         guard let recentsData = defaults.object(forKey: "airports") as? Data else {
-            
-            /* TO DO - Do something different here like update the defaults with KPWM & KAUS because it should not be empty */
-            
             completed(.success([]))
             return
         }
@@ -73,9 +75,9 @@ enum PersistanceManager {
             return
         } catch {
             completed(.failure(.unableToRetrieveRecents))
-            
         }
     }
+    
     
     static func save(recents: [RecentAirport]) -> AWError? {
         do {
@@ -87,5 +89,4 @@ enum PersistanceManager {
             return .unableToAddToRecents
         }
     }
-    
 }

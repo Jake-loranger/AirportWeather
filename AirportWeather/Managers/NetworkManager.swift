@@ -21,8 +21,6 @@ class NetworkManager {
             return
         }
         
-        /* TO DO - Check if 1 has to be an Int */
-        
         var request = URLRequest(url: url)
         request.addValue("1", forHTTPHeaderField: "ff-coding-exercise")
         

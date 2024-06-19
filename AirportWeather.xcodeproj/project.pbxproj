@@ -27,6 +27,8 @@
 		A190287E2C2220F2007C3644 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190287D2C2220F2007C3644 /* PersistanceManager.swift */; };
 		A19028802C222985007C3644 /* RecentAirport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A190287F2C222985007C3644 /* RecentAirport.swift */; };
 		A19028822C222D3E007C3644 /* AWTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028812C222D3E007C3644 /* AWTableCell.swift */; };
+		A19028842C2255BD007C3644 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028832C2255BD007C3644 /* String+Ext.swift */; };
+		A19028862C225DD7007C3644 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028852C225DD7007C3644 /* Int+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		A190287D2C2220F2007C3644 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		A190287F2C222985007C3644 /* RecentAirport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAirport.swift; sourceTree = "<group>"; };
 		A19028812C222D3E007C3644 /* AWTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWTableCell.swift; sourceTree = "<group>"; };
+		A19028832C2255BD007C3644 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		A19028852C225DD7007C3644 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				A19028742C20F60A007C3644 /* UIViewControllers+Ext.swift */,
+				A19028832C2255BD007C3644 /* String+Ext.swift */,
+				A19028852C225DD7007C3644 /* Int+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,10 +278,12 @@
 				A19028462C20B9FD007C3644 /* AppDelegate.swift in Sources */,
 				A19028482C20B9FD007C3644 /* SceneDelegate.swift in Sources */,
 				A190285E2C20BFCA007C3644 /* AWTabBarController.swift in Sources */,
+				A19028862C225DD7007C3644 /* Int+Ext.swift in Sources */,
 				A19028682C20D4E5007C3644 /* AWButton.swift in Sources */,
 				A19028662C20D3EB007C3644 /* AWSearchTextField.swift in Sources */,
 				A190286F2C20E361007C3644 /* WeatherReport.swift in Sources */,
 				A19028792C220EE7007C3644 /* AWConditionVC.swift in Sources */,
+				A19028842C2255BD007C3644 /* String+Ext.swift in Sources */,
 				A19028642C20D2B7007C3644 /* AWTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
