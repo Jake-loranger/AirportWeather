@@ -33,12 +33,16 @@ An iOS application that displays weather data for user-specified airports
   - 1 hour - UI Planning for Condition/Forecast views, Aviation weather research
   - 2 hours - ConditionsVC layout, Data Formatting for display
   - 3 hours - PersistanceManager, RecentsVC
+- June 19th
+  - 1 hour - Data Formatting for Conditions View
+  - 2 hours - ForecastVC & ForecastCell
    
 ## References
 ### Aviation Weather Resources
   - [METAR data display](https://aviationweather.gov/data/metar)
   - [METAR explanation](https://learntoflyblog.com/metar-deciphered/)
   - [METAR Decoder](https://www.weather.gov/media/wrh/mesowest/metar_decode_key.pdf)
+  - [TAF vs. METAR](https://www.dtn.com/what-is-the-difference-between-metar-and-taf-in-aviation-aviationsentry-airline-edition/#:~:text=To%20put%20it%20simply%2C%20a,conditions%20for%20a%20certain%20period.)
 
 ### UIKit Docs
   - [UIStackView](https://developer.apple.com/documentation/uikit/uistackview)
