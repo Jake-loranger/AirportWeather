@@ -11,6 +11,7 @@ class AWRecentsVC: UIViewController {
     
     let tableView = UITableView()
     var recentAirports: [RecentAirport] = []
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +53,22 @@ class AWRecentsVC: UIViewController {
         view.addSubview(tableView)
         
         tableView.frame = view.bounds
-        tableView.rowHeight = 100
+        tableView.rowHeight = 130
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshRecentsData), for: .valueChanged)
+        
         tableView.register(AWRecentCell.self, forCellReuseIdentifier: AWRecentCell.reuseID)
+    }
+    
+    @objc private func refreshRecentsData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.view.bringSubviewToFront(self.tableView)
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 

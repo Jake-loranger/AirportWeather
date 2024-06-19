@@ -11,15 +11,15 @@ class AWForecastCell: UITableViewCell {
 
     static let reuseID = "AWForecastCell"
     let timeRangeLabel = AWTitleLabel(textAlignment: .left, fontSize: 18)
-    let tarLabel = AWTitleLabel(titleString: "TAF: ", textAlignment: .left, fontSize: 12, weight: .semibold)
-    let tarValueLabel = AWTitleLabel(textAlignment: .left, fontSize: 12, weight: .regular)
+    let tafLabel = AWTitleLabel(titleString: "TAF: ", textAlignment: .left, fontSize: 12, weight: .semibold)
+    let tafValueLabel = AWTitleLabel(textAlignment: .left, fontSize: 12, weight: .regular)
     let flightRulesLabel = AWTitleLabel(titleString: "Flight Rules: ", textAlignment: .left, fontSize: 12, weight: .semibold)
     let flightRulesValueLabel = AWTitleLabel(textAlignment: .left, fontSize: 12, weight: .regular)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureTimeRange()
-        configureTAR()
+        configureTaf()
         configureFlightRules()
     }
     
@@ -33,7 +33,7 @@ class AWForecastCell: UITableViewCell {
         timeRangeLabel.text = startDate + " - " + endDate
         
         let tafText = (conditions.text ?? "N/A")
-        tarValueLabel.text = tafText
+        tafValueLabel.text = tafText
         
         let flightRulesText = (conditions.flightRules?.uppercased() ?? "N/A")
         flightRulesValueLabel.text = flightRulesText
@@ -54,25 +54,25 @@ class AWForecastCell: UITableViewCell {
         ])
     }
     
-    private func configureTAR() {
-        addSubview(tarLabel)
-        addSubview(tarValueLabel)
-        tarValueLabel.numberOfLines = 2
-        tarValueLabel.lineBreakMode = .byWordWrapping
+    private func configureTaf() {
+        addSubview(tafLabel)
+        addSubview(tafValueLabel)
+        tafValueLabel.numberOfLines = 2
+        tafValueLabel.lineBreakMode = .byWordWrapping
         
         let padding: CGFloat = 20
-        tarLabel.translatesAutoresizingMaskIntoConstraints = false
-        tarValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        tafLabel.translatesAutoresizingMaskIntoConstraints = false
+        tafValueLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tarLabel.topAnchor.constraint(equalTo: timeRangeLabel.bottomAnchor, constant: 5),
-            tarLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            tarLabel.widthAnchor.constraint(equalToConstant: 30),
-            tarLabel.heightAnchor.constraint(equalToConstant: padding),
+            tafLabel.topAnchor.constraint(equalTo: timeRangeLabel.bottomAnchor, constant: 5),
+            tafLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            tafLabel.widthAnchor.constraint(equalToConstant: 30),
+            tafLabel.heightAnchor.constraint(equalToConstant: padding),
             
-            tarValueLabel.topAnchor.constraint(equalTo: timeRangeLabel.bottomAnchor, constant: 5),
-            tarValueLabel.leadingAnchor.constraint(equalTo: tarLabel.trailingAnchor, constant: 5),
-            tarValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            tarValueLabel.heightAnchor.constraint(equalToConstant: padding)
+            tafValueLabel.topAnchor.constraint(equalTo: timeRangeLabel.bottomAnchor, constant: 5),
+            tafValueLabel.leadingAnchor.constraint(equalTo: tafLabel.trailingAnchor, constant: 5),
+            tafValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            tafValueLabel.heightAnchor.constraint(equalToConstant: padding)
         ])
     }
     
@@ -86,12 +86,12 @@ class AWForecastCell: UITableViewCell {
         flightRulesLabel.translatesAutoresizingMaskIntoConstraints = false
         flightRulesValueLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            flightRulesLabel.topAnchor.constraint(equalTo: tarLabel.bottomAnchor, constant: 3),
+            flightRulesLabel.topAnchor.constraint(equalTo: tafLabel.bottomAnchor, constant: 3),
             flightRulesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             flightRulesLabel.widthAnchor.constraint(equalToConstant: 70),
             flightRulesLabel.heightAnchor.constraint(equalToConstant: padding),
             
-            flightRulesValueLabel.topAnchor.constraint(equalTo: tarLabel.bottomAnchor, constant: 3),
+            flightRulesValueLabel.topAnchor.constraint(equalTo: tafLabel.bottomAnchor, constant: 3),
             flightRulesValueLabel.leadingAnchor.constraint(equalTo: flightRulesLabel.trailingAnchor, constant: 5),
             flightRulesValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
             flightRulesValueLabel.heightAnchor.constraint(equalToConstant: padding)
