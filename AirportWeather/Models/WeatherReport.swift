@@ -60,14 +60,14 @@ struct Conditions: Codable, Hashable {
 }
 
 struct Forecast: Codable, Hashable {
-    let text: String
-    let ident: String
-    let dateIssued: String
+    let text: String?
+    let ident: String?
+    let dateIssued: String?
     let period: Period?
-    let lat: Double
-    let lon: Double
-    let elevationFt: Double
-    let conditions: [Conditions]
+    let lat: Double?
+    let lon: Double?
+    let elevationFt: Double?
+    let conditions: [Conditions]?
 }
 
 struct Period: Codable, Hashable {
