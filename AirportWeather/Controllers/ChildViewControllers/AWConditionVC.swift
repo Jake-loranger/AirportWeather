@@ -93,8 +93,13 @@ class AWConditionVC: UIViewController {
         let pressureHpaString = String(format: "%.2f hPa", pressureHpa)
 
         let cloudLayers = conditions.cloudLayers ?? []
-        let cloudLayersString = cloudLayers.isEmpty ? "No cloud layers" : cloudLayers.map { $0.coverage ?? "" }.joined(separator: ", ")
-
+        let cloudLayersString = cloudLayers.isEmpty ? "No cloud layers" : cloudLayers.compactMap { cloudLayer in
+            if let coverage = cloudLayer.coverage, let altitude = cloudLayer.altitudeFt {
+                return "\(coverage) at \(Int(altitude))"
+            }
+            return nil
+        }.joined(separator: ", ")
+        
         let metarView = AWConditionDetailView(title: "METAR", value: weatherReport.report.conditions?.text ?? "No METAR value")
         let latView = AWConditionDetailView(title: "Longitude", value: lonString)
         let lonView = AWConditionDetailView(title: "Latitude", value: latString)
@@ -107,7 +112,7 @@ class AWConditionVC: UIViewController {
         let pressureView = AWConditionDetailView(title: "Pressure", value: pressureHpaString)
         let skyView = AWConditionDetailView(title: "Sky Coverage", value: cloudLayersString)
 
-        let updatedTime = AWTitleLabel(titleString: "Time Issued: \(conditions.dateIssued ?? "N/A")", textAlignment: .center, fontSize: 10)
+        let updatedTime = AWTitleLabel(titleString: "Time Issued: \(conditions.dateIssued?.convertToDateFormat() ?? "N/A")", textAlignment: .center, fontSize: 10)
         updatedTime.textColor = .systemGray2
         
         let rows = [
