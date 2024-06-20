@@ -15,6 +15,7 @@ class AWDetailsVC: UIViewController {
     var conditionsVC: AWConditionVC?
     var forecastVC: AWForecastVC?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -53,6 +54,7 @@ class AWDetailsVC: UIViewController {
         }
     }
     
+    
     private func saveToRecents(for airportSymbol: String) {
         let recentAirport = RecentAirport(airportSymbol: airportSymbol)
         
@@ -86,6 +88,7 @@ class AWDetailsVC: UIViewController {
         ])
     }
     
+    
     private func showConditionsView() {
         guard let weatherReport = weatherReport else { return }
         conditionsVC = AWConditionVC(weatherReport: weatherReport)
@@ -104,6 +107,7 @@ class AWDetailsVC: UIViewController {
         conditionsVC.didMove(toParent: self)
     }
     
+    
     private func showForecastView() {
         guard let weatherReport = weatherReport else { return }
         forecastVC = AWForecastVC(weatherReport: weatherReport)
@@ -121,6 +125,7 @@ class AWDetailsVC: UIViewController {
         
         forecastVC.didMove(toParent: self)
     }
+    
     
     private func removeChildViewController(_ childViewController: UIViewController?) {
         guard let childViewController = childViewController else { return }

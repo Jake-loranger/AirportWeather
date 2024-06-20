@@ -88,13 +88,13 @@
 		A19028442C20B9FD007C3644 /* AirportWeather */ = {
 			isa = PBXGroup;
 			children = (
-				A19028612C20C767007C3644 /* Models */,
-				A190286B2C20E086007C3644 /* Managers */,
-				A19028622C20C77C007C3644 /* Views */,
 				A190285A2C20BEF5007C3644 /* Controllers */,
-				A19028722C20F57B007C3644 /* Utilities */,
+				A19028622C20C77C007C3644 /* Custom Views */,
 				A19028732C20F5D0007C3644 /* Extensions */,
+				A190286B2C20E086007C3644 /* Managers */,
+				A19028612C20C767007C3644 /* Models */,
 				A19028592C20BE15007C3644 /* Supporting */,
+				A19028722C20F57B007C3644 /* Utilities */,
 				A19028532C20B9FF007C3644 /* Info.plist */,
 			);
 			path = AirportWeather;
@@ -147,17 +147,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A19028622C20C77C007C3644 /* Views */ = {
+		A19028622C20C77C007C3644 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				A19028632C20D2B7007C3644 /* AWTitleLabel.swift */,
-				A19028652C20D3EB007C3644 /* AWSearchTextField.swift */,
-				A19028672C20D4E5007C3644 /* AWButton.swift */,
-				A19028762C2206AC007C3644 /* AWConditionDetailView.swift */,
-				A19028812C222D3E007C3644 /* AWRecentCell.swift */,
-				A19028892C2368B0007C3644 /* AWForecastCell.swift */,
+				A19028912C23AAC5007C3644 /* Buttons */,
+				A19028902C23AAA9007C3644 /* Cells */,
+				A190288D2C23AA83007C3644 /* Labels */,
+				A190288E2C23AA89007C3644 /* TextFields */,
+				A190288F2C23AAA2007C3644 /* Views */,
 			);
-			path = Views;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		A190286B2C20E086007C3644 /* Managers */ = {
@@ -193,6 +192,47 @@
 				A19028782C220EE7007C3644 /* AWConditionVC.swift */,
 			);
 			path = ChildViewControllers;
+			sourceTree = "<group>";
+		};
+		A190288D2C23AA83007C3644 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				A19028632C20D2B7007C3644 /* AWTitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		A190288E2C23AA89007C3644 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				A19028652C20D3EB007C3644 /* AWSearchTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		A190288F2C23AAA2007C3644 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A19028762C2206AC007C3644 /* AWConditionDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A19028902C23AAA9007C3644 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A19028812C222D3E007C3644 /* AWRecentCell.swift */,
+				A19028892C2368B0007C3644 /* AWForecastCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A19028912C23AAC5007C3644 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A19028672C20D4E5007C3644 /* AWButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -436,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -13,6 +13,7 @@ class NetworkManager {
     
     private init() {}
     
+    
     func getAirportWeatherData(for airportSymbol: String, completed: @escaping (Result<WeatherReport, AWError>) -> Void) {
         let endpoint = baseUrl + airportSymbol
         

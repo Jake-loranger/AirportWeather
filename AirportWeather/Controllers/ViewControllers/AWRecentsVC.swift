@@ -13,11 +13,13 @@ class AWRecentsVC: UIViewController {
     var recentAirports: [RecentAirport] = []
     let refreshControl = UIRefreshControl()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureTableView()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,6 +37,7 @@ class AWRecentsVC: UIViewController {
     private func getRecents() {
         PersistanceManager.retrieveRecents { [weak self] result in
             guard let self = self else { return }
+            
             switch result {
             case .success(let recents):
                 self.recentAirports = recents
@@ -43,11 +46,13 @@ class AWRecentsVC: UIViewController {
                     self.tableView.reloadData()
                     self.view.bringSubviewToFront(self.tableView)
                 }
+                
             case .failure(let error):
                 self.presentErrorOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
+    
     
     private func configureTableView() {
         view.addSubview(tableView)
@@ -63,6 +68,7 @@ class AWRecentsVC: UIViewController {
         tableView.register(AWRecentCell.self, forCellReuseIdentifier: AWRecentCell.reuseID)
     }
     
+    
     @objc private func refreshRecentsData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -72,10 +78,12 @@ class AWRecentsVC: UIViewController {
     }
 }
 
+
 extension AWRecentsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         recentAirports.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AWRecentCell.reuseID) as! AWRecentCell
@@ -83,6 +91,7 @@ extension AWRecentsVC: UITableViewDelegate, UITableViewDataSource {
         cell.set(airport: recentAirport)
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

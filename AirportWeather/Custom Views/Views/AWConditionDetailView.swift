@@ -13,14 +13,17 @@ class AWConditionDetailView: UIView {
     let detailSeperator = UIView()
     let detailValue = UILabel()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     init(title: String, value: String) {
         super.init(frame: .zero)
@@ -28,6 +31,7 @@ class AWConditionDetailView: UIView {
         detailValue.text = value
         configure()
     }
+    
     
     private func configure() {
         addSubview(detailTitle)
@@ -61,6 +65,5 @@ class AWConditionDetailView: UIView {
             detailValue.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailValue.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-        
     }
 }

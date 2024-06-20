@@ -9,7 +9,7 @@ import Foundation
 
 struct WeatherReport: Codable {
     let report: Report
-
+    
     struct Report: Codable {
         let conditions: Conditions?
         let forecast: Forecast?
@@ -37,7 +37,6 @@ struct Conditions: Codable, Hashable {
     let visibility: VisibilityInfo?
     let wind: WindInfo?
     let period: Period?
-    
     
     struct CloudLayerInfo: Codable, Hashable  {
         let coverage: String?

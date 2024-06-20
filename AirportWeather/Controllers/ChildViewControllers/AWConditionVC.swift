@@ -30,16 +30,16 @@ class AWConditionVC: UIViewController {
     }
     
     private func createHorizontalStackView(column1: AWConditionDetailView, column2: AWConditionDetailView) -> UIStackView {
-            let hStackView = UIStackView()
-            hStackView.axis = .horizontal
-            hStackView.spacing = 40
-            hStackView.distribution = .fillEqually
-            
-            hStackView.addArrangedSubview(column1)
-            hStackView.addArrangedSubview(column2)
-            
-            return hStackView
-        }
+        let hStackView = UIStackView()
+        hStackView.axis = .horizontal
+        hStackView.spacing = 40
+        hStackView.distribution = .fillEqually
+        
+        hStackView.addArrangedSubview(column1)
+        hStackView.addArrangedSubview(column2)
+        
+        return hStackView
+    }
     
     private func layoutUI() {
         view.addSubview(vStackView)
@@ -59,6 +59,7 @@ class AWConditionVC: UIViewController {
         ])
     }
     
+    
     func configureUIElements() {
         guard let conditions = weatherReport.report.conditions else { return }
         
@@ -67,31 +68,31 @@ class AWConditionVC: UIViewController {
         
         let latString = String(format: "%.6f", lat)
         let lonString = String(format: "%.6f", lon)
-
+        
         let weather = conditions.weather?.first ?? "N/A"
         let weatherString = weather != "N/A" ? weather : "No weather data"
-
+        
         let tempC = conditions.tempC ?? 0.0
         let tempCString = String(format: "%.1f°C", tempC)
         
         let dewpointC = conditions.dewpointC ?? 0.0
         let dewpointCString = String(format: "%.1f°C", dewpointC)
-
+        
         let windDirection = conditions.wind?.direction ?? 0
         let windSpeed = conditions.wind?.speedKts ?? 0.0
         let windSpeedString = windSpeed > 0 ? String(format: "%.1f knots", windSpeed) : ""
         let windDirectionString = windDirection > 0 ? (" at " + String(windDirection) + "°") : ""
         let windString = windSpeedString + windDirectionString
-
+        
         let visibility = conditions.visibility?.distanceSm ?? 0.0
         let visibilityString = visibility > 0 ? String(format: "%.1f sm", visibility) : "No visibility data"
-
+        
         let relativeHumidity = conditions.relativeHumidity ?? 0
         let relativeHumidityString = "\(relativeHumidity)%"
-
+        
         let pressureHpa = conditions.pressureHpa ?? 0.0
         let pressureHpaString = String(format: "%.2f hPa", pressureHpa)
-
+        
         let cloudLayers = conditions.cloudLayers ?? []
         let cloudLayersString = cloudLayers.isEmpty ? "No cloud layers" : cloudLayers.compactMap { cloudLayer in
             if let coverage = cloudLayer.coverage, let altitude = cloudLayer.altitudeFt {
@@ -111,7 +112,7 @@ class AWConditionVC: UIViewController {
         let humidView = AWConditionDetailView(title: "Humidity", value: relativeHumidityString)
         let pressureView = AWConditionDetailView(title: "Pressure", value: pressureHpaString)
         let skyView = AWConditionDetailView(title: "Sky Coverage", value: cloudLayersString)
-
+        
         let updatedTime = AWTitleLabel(titleString: "Time Issued: \(conditions.dateIssued?.convertToDateFormat() ?? "N/A")", textAlignment: .center, fontSize: 10)
         updatedTime.textColor = .systemGray2
         
@@ -123,7 +124,6 @@ class AWConditionVC: UIViewController {
             createHorizontalStackView(column1: pressureView, column2: humidView),
             createHorizontalStackView(column1: latView, column2: lonView),
             updatedTime
-            
         ]
         
         for row in rows {

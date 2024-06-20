@@ -14,6 +14,7 @@ class AWTabBarController: UITabBarController {
         configureUITabBar()
     }
     
+    
     private func configureUITabBar() {
         let appearance = UITabBarAppearance()
         appearance.backgroundColor = .systemBackground
@@ -24,6 +25,7 @@ class AWTabBarController: UITabBarController {
         viewControllers = [createSearchNC(), createRecentsNC()]
     }
     
+    
     private func createSearchNC() -> UINavigationController {
         let searchVC = AWSearchVC()
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
@@ -33,15 +35,13 @@ class AWTabBarController: UITabBarController {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = .systemBackground
         
         searchNC.navigationBar.standardAppearance = appearance
         searchNC.navigationBar.scrollEdgeAppearance = appearance
-//        searchNC.navigationBar.compactAppearance = appearance
-//        searchNC.navigationBar.tintColor = .systemGreen
         
         return searchNC
     }
+    
     
     private func createRecentsNC() -> UINavigationController {
         let recentsVC = AWRecentsVC()
@@ -52,14 +52,10 @@ class AWTabBarController: UITabBarController {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = .systemBackground
         
         recentsNC.navigationBar.standardAppearance = appearance
         recentsNC.navigationBar.scrollEdgeAppearance = appearance
-//        recentsNC.navigationBar.compactAppearance = appearance
-//        recentsNC.navigationBar.tintColor = .systemGreen
         
         return recentsNC
     }
-
 }

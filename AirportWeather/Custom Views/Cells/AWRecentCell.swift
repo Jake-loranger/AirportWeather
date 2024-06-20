@@ -18,6 +18,7 @@ class AWRecentCell: UITableViewCell {
     let flightRulesValueLabel = AWTitleLabel(textAlignment: .left, fontSize: 10, weight: .regular)
     let lastUpdatedLabel = AWTitleLabel(textAlignment: .right, fontSize: 10, weight: .regular)
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureAirportTitle()
@@ -26,14 +27,17 @@ class AWRecentCell: UITableViewCell {
         configureLastUpdated()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     func set(airport: RecentAirport) {
         airportTitle.text = airport.airportSymbol
         getAirportData(airport.airportSymbol)
     }
+    
     
     private func getAirportData(_ airportSymbol: String) {
         NetworkManager.shared.getAirportWeatherData(for: airportSymbol) { [weak self] result in
@@ -54,6 +58,7 @@ class AWRecentCell: UITableViewCell {
         }
     }
     
+    
     private func configureAirportTitle() {
         addSubview(airportTitle)
         
@@ -66,6 +71,7 @@ class AWRecentCell: UITableViewCell {
             airportTitle.heightAnchor.constraint(equalToConstant: 28)
         ])
     }
+    
 
     private func configureMetar() {
         addSubview(metarLabel)
@@ -89,6 +95,7 @@ class AWRecentCell: UITableViewCell {
         ])
     }
     
+    
     private func configureFlightRules() {
         addSubview(flightRulesLabel)
         addSubview(flightRulesValueLabel)
@@ -111,6 +118,7 @@ class AWRecentCell: UITableViewCell {
             
         ])
     }
+    
     
     private func configureLastUpdated() {
         addSubview(lastUpdatedLabel)

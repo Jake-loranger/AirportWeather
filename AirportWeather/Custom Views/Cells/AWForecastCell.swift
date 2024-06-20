@@ -16,6 +16,7 @@ class AWForecastCell: UITableViewCell {
     let flightRulesLabel = AWTitleLabel(titleString: "Flight Rules: ", textAlignment: .left, fontSize: 12, weight: .semibold)
     let flightRulesValueLabel = AWTitleLabel(textAlignment: .left, fontSize: 12, weight: .regular)
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureTimeRange()
@@ -23,9 +24,11 @@ class AWForecastCell: UITableViewCell {
         configureFlightRules()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     func set(conditions: Conditions) {
         let startDate = conditions.period?.dateStart?.convertToDateFormat() ?? "N/A"
@@ -38,6 +41,7 @@ class AWForecastCell: UITableViewCell {
         let flightRulesText = (conditions.flightRules?.uppercased() ?? "N/A")
         flightRulesValueLabel.text = flightRulesText
     }
+    
     
     private func configureTimeRange() {
         addSubview(timeRangeLabel)
@@ -53,6 +57,7 @@ class AWForecastCell: UITableViewCell {
             timeRangeLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
+    
     
     private func configureTaf() {
         addSubview(tafLabel)
@@ -76,6 +81,7 @@ class AWForecastCell: UITableViewCell {
         ])
     }
     
+    
     private func configureFlightRules() {
         addSubview(flightRulesLabel)
         addSubview(flightRulesValueLabel)
@@ -95,7 +101,6 @@ class AWForecastCell: UITableViewCell {
             flightRulesValueLabel.leadingAnchor.constraint(equalTo: flightRulesLabel.trailingAnchor, constant: 5),
             flightRulesValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
             flightRulesValueLabel.heightAnchor.constraint(equalToConstant: padding)
-            
         ])
     }
 }

@@ -26,6 +26,7 @@ class AWSearchVC: UIViewController {
         configureCallToActionButton()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
@@ -35,8 +36,6 @@ class AWSearchVC: UIViewController {
     private func configureImageView() {
         view.addSubview(imageView)
         imageView.image = UIImage(systemName: "airplane.departure")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-        
-        /* TO DO - Make position dynamic to screen size & orientation */
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -114,4 +113,3 @@ extension AWSearchVC: UITextFieldDelegate {
         return true
     }
 }
-
