@@ -2,15 +2,16 @@
 An iOS application that displays weather data for user-specified airports
 
 ## Mockup
+<img width="860" alt="AirportWeatherDesign" src="https://github.com/Jake-loranger/AirportWeather/assets/106925875/09b0a8f2-672e-4693-b74c-1156aedbe5c3">
 
 
 ## Design Overview
 - MVC architecture
+- Light and Dark mode compatible
 - 3 Major ViewControllers (Search, Details, Recents)
   - **Search VC**: Enables the user to enter an airport symbol and navigate to the details view for that specific airport. TextField checks and handles error for an empty entry. Airport symbol present within the TextField is passed to the details view.
   - **Details VC**: Makes a network call to the API using the airportSymbol. If the airport data request is invalid, it pops the details view and presents the error on the search view. If the airport data request is successful, it adds that symbol to UserDefaults and passes the data to the childVCs (Condition & Forecast) to display. A segmentControlBar allows the user to switch between the Conditions view and Forecast view.
   - **Recents VC**: Displays the UserDefault airports in a TableView. The user can select a cell to view the details view for that specific airport and swipe to delete that cell from the recents. The TableView is initially populated with the KAUS and KPWM airports by initializing the UserDefaults with those values in the AppDelegate.
-- Light and Dark mode compatible
 
 ## Problems Overcome
 1. Figuring out what values in the JSON response were optional. Looked for docs on the api but couldn't find any.
@@ -23,6 +24,12 @@ An iOS application that displays weather data for user-specified airports
 1. UI Layout needs to be refactored to enable dynamic response to landscape mode and cross-platform compatibility (iPad, iPhone Max)
 2. Can add the same airport to recents twice if you exclude the K (KSEA, SEA)
 3. TableView's borders wouldn't reach the leadingAnchor of the view
+4. TabBar hides the bottom of the TableView on ForecastVC
+
+## Future Improvements
+1. Combine Search and Recents views
+2. Display full airport name
+3. Map as an option on the SegmentControlBar
 
 ## Time Sheet
 - June 17th 
@@ -36,12 +43,12 @@ An iOS application that displays weather data for user-specified airports
 - June 19th
   - 1 hour - Data Formatting for Conditions View
   - 2 hours - ForecastVC & ForecastCell
+  - 2 hours - RecentsVC, ForecastCell, & Cleanup
    
 ## References
 ### Aviation Weather Resources
   - [METAR data display](https://aviationweather.gov/data/metar)
   - [METAR explanation](https://learntoflyblog.com/metar-deciphered/)
-  - [METAR Decoder](https://www.weather.gov/media/wrh/mesowest/metar_decode_key.pdf)
   - [TAF vs. METAR](https://www.dtn.com/what-is-the-difference-between-metar-and-taf-in-aviation-aviationsentry-airline-edition/#:~:text=To%20put%20it%20simply%2C%20a,conditions%20for%20a%20certain%20period.)
 
 ### UIKit Docs
