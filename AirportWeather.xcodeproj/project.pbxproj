@@ -29,6 +29,7 @@
 		A19028822C222D3E007C3644 /* AWRecentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028812C222D3E007C3644 /* AWRecentCell.swift */; };
 		A19028842C2255BD007C3644 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028832C2255BD007C3644 /* String+Ext.swift */; };
 		A190288A2C2368B0007C3644 /* AWForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028892C2368B0007C3644 /* AWForecastCell.swift */; };
+		A1CBF3E42C2C9DDA0063A617 /* AWConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBF3E32C2C9DDA0063A617 /* AWConditionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A19028812C222D3E007C3644 /* AWRecentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWRecentCell.swift; sourceTree = "<group>"; };
 		A19028832C2255BD007C3644 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		A19028892C2368B0007C3644 /* AWForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWForecastCell.swift; sourceTree = "<group>"; };
+		A1CBF3E32C2C9DDA0063A617 /* AWConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,11 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				A190285A2C20BEF5007C3644 /* Controllers */,
-				A19028622C20C77C007C3644 /* Custom Views */,
+				A19028622C20C77C007C3644 /* CustomViews */,
 				A19028732C20F5D0007C3644 /* Extensions */,
 				A190286B2C20E086007C3644 /* Managers */,
 				A19028612C20C767007C3644 /* Models */,
 				A19028592C20BE15007C3644 /* Supporting */,
+				A1CBF3E12C2C9DB00063A617 /* ViewModels */,
 				A19028722C20F57B007C3644 /* Utilities */,
 				A19028532C20B9FF007C3644 /* Info.plist */,
 			);
@@ -147,7 +150,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A19028622C20C77C007C3644 /* Custom Views */ = {
+		A19028622C20C77C007C3644 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				A19028912C23AAC5007C3644 /* Buttons */,
@@ -156,7 +159,7 @@
 				A190288E2C23AA89007C3644 /* TextFields */,
 				A190288F2C23AAA2007C3644 /* Views */,
 			);
-			path = "Custom Views";
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		A190286B2C20E086007C3644 /* Managers */ = {
@@ -235,6 +238,14 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		A1CBF3E12C2C9DB00063A617 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A1CBF3E32C2C9DDA0063A617 /* AWConditionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -307,6 +318,7 @@
 				A19028802C222985007C3644 /* RecentAirport.swift in Sources */,
 				A190286A2C20D871007C3644 /* AWDetailsVC.swift in Sources */,
 				A19028752C20F60A007C3644 /* UIViewControllers+Ext.swift in Sources */,
+				A1CBF3E42C2C9DDA0063A617 /* AWConditionViewModel.swift in Sources */,
 				A190284A2C20B9FD007C3644 /* AWSearchVC.swift in Sources */,
 				A190287E2C2220F2007C3644 /* PersistanceManager.swift in Sources */,
 				A19028822C222D3E007C3644 /* AWRecentCell.swift in Sources */,
@@ -453,7 +465,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4C7H6LPRHA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AirportWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -482,7 +494,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4C7H6LPRHA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AirportWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

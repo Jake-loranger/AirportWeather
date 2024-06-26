@@ -9,7 +9,7 @@ import UIKit
 
 class AWConditionVC: UIViewController {
     
-    var weatherReport: WeatherReport!
+    var conditionVM: AWConditionViewModel!
     
     let vStackView = UIStackView()
     let hStackView = UIStackView()
@@ -30,13 +30,12 @@ class AWConditionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
-        configureUIElements()
-        setDetailValues()
+        setConditionViewValues()
     }
     
     init(weatherReport: WeatherReport) {
         super.init(nibName: nil, bundle: nil)
-        self.weatherReport = weatherReport
+        self.conditionVM = AWConditionViewModel(weatherReport)
     }
     
     required init?(coder: NSCoder) {
@@ -66,14 +65,6 @@ class AWConditionVC: UIViewController {
         vStackView.spacing = padding
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            vStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            vStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        ])
-    }
-    
-    private func configureUIElements() {
         let rows = [
             metarView,
             createHorizontalStackView(column1: windView, column2: visView),
@@ -87,63 +78,27 @@ class AWConditionVC: UIViewController {
         for row in rows {
             vStackView.addArrangedSubview(row)
         }
+        
+        NSLayoutConstraint.activate([
+            vStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            vStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        ])
     }
     
-    
-    private func setDetailValues() {
-        guard let conditions = weatherReport.report.conditions else { return }
-        
-        metarView.detailValue.text = conditions.text
-        
-        let lat = conditions.lat ?? 0.0
-        let latString = String(format: "%.6f", lat)
-        latView.detailValue.text = latString
-        
-        let lon = conditions.lon ?? 0.0
-        let lonString = String(format: "%.6f", lon)
-        lonView.detailValue.text = lonString
-        
-        let weather = conditions.weather?.first ?? "N/A"
-        let weatherString = weather != "N/A" ? weather : "No weather data"
-        weatherView.detailValue.text = weatherString
-        
-        let tempC = conditions.tempC ?? 0.0
-        let tempCString = String(format: "%.1f°C", tempC)
-        tempView.detailValue.text = tempCString
-        
-        let dewpointC = conditions.dewpointC ?? 0.0
-        let dewpointCString = String(format: "%.1f°C", dewpointC)
-        dewView.detailValue.text = dewpointCString
-        
-        let windDirection = conditions.wind?.direction ?? 0
-        let windSpeed = conditions.wind?.speedKts ?? 0.0
-        let windSpeedString = windSpeed > 0 ? String(format: "%.1f knots", windSpeed) : ""
-        let windDirectionString = windDirection > 0 ? (" at " + String(windDirection) + "°") : ""
-        let windString = windSpeedString + windDirectionString
-        windView.detailValue.text = weatherString
-        
-        let visibility = conditions.visibility?.distanceSm ?? 0.0
-        let visibilityString = visibility > 0 ? String(format: "%.1f sm", visibility) : "No visibility data"
-        visView.detailValue.text = visibilityString
-        
-        let relativeHumidity = conditions.relativeHumidity ?? 0
-        let relativeHumidityString = "\(relativeHumidity)%"
-        humidView.detailValue.text = relativeHumidityString
-        
-        let pressureHpa = conditions.pressureHpa ?? 0.0
-        let pressureHpaString = String(format: "%.2f hPa", pressureHpa)
-        pressureView.detailValue.text = pressureHpaString
-        
-        let cloudLayers = conditions.cloudLayers ?? []
-        let cloudLayersString = cloudLayers.isEmpty ? "No cloud layers" : cloudLayers.compactMap { cloudLayer in
-            if let coverage = cloudLayer.coverage, let altitude = cloudLayer.altitudeFt {
-                return "\(coverage) at \(Int(altitude))"
-            }
-            return nil
-        }.joined(separator: ", ")
-        skyView.detailValue.text = cloudLayersString
-        
-        updatedTime.text = "Time Issued: \(conditions.dateIssued?.convertToDateFormat() ?? "N/A")"
-        updatedTime.textColor = .systemGray2
+    private func setConditionViewValues() {
+        metarView.detailValueLabel.text = conditionVM.metarString
+        latView.detailValueLabel.text = conditionVM.latString
+        lonView.detailValueLabel.text = conditionVM.lonString
+        weatherView.detailValueLabel.text = conditionVM.weatherString
+        tempView.detailValueLabel.text = conditionVM.tempString
+        dewView.detailValueLabel.text = conditionVM.dewString
+        windView.detailValueLabel.text = conditionVM.windString
+        visView.detailValueLabel.text = conditionVM.visibilityString
+        humidView.detailValueLabel.text = conditionVM.relativeHumidityString
+        pressureView.detailValueLabel.text = conditionVM.pressureHpaString
+        skyView.detailValueLabel.text = conditionVM.cloudLayersString
+        updatedTime.text = "Time Issued: " + conditionVM.timeIssued
+        updatedTime.textColor = .systemGray4
     }
 }

@@ -11,7 +11,7 @@ class AWConditionDetailView: UIView {
     
     let detailTitle = UILabel()
     let detailSeperator = UIView()
-    let detailValue = UILabel()
+    let detailValueLabel = UILabel()
     
     
     override init(frame: CGRect) {
@@ -28,7 +28,7 @@ class AWConditionDetailView: UIView {
     init(title: String, value: String = "") {
         super.init(frame: .zero)
         detailTitle.text = title
-        detailValue.text = value
+        detailValueLabel.text = value
         configure()
     }
     
@@ -36,7 +36,7 @@ class AWConditionDetailView: UIView {
     private func configure() {
         addSubview(detailTitle)
         addSubview(detailSeperator)
-        addSubview(detailValue)
+        addSubview(detailValueLabel)
         
         detailTitle.translatesAutoresizingMaskIntoConstraints = false
         detailTitle.font = UIFont.systemFont(ofSize: 16, weight: .bold)
@@ -45,10 +45,10 @@ class AWConditionDetailView: UIView {
         detailSeperator.translatesAutoresizingMaskIntoConstraints = false
         detailSeperator.backgroundColor = .secondarySystemBackground
         
-        detailValue.translatesAutoresizingMaskIntoConstraints = false
-        detailValue.font = UIFont.systemFont(ofSize: 12)
-        detailValue.numberOfLines = 3
-        detailValue.lineBreakMode = .byWordWrapping
+        detailValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        detailValueLabel.font = UIFont.systemFont(ofSize: 12)
+        detailValueLabel.numberOfLines = 3
+        detailValueLabel.lineBreakMode = .byWordWrapping
         
         NSLayoutConstraint.activate([
             detailTitle.topAnchor.constraint(equalTo: topAnchor),
@@ -60,10 +60,10 @@ class AWConditionDetailView: UIView {
             detailSeperator.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailSeperator.heightAnchor.constraint(equalToConstant: 2),
             
-            detailValue.topAnchor.constraint(equalTo: detailSeperator.bottomAnchor, constant: 8),
-            detailValue.leadingAnchor.constraint(equalTo: leadingAnchor),
-            detailValue.trailingAnchor.constraint(equalTo: trailingAnchor),
-            detailValue.bottomAnchor.constraint(equalTo: bottomAnchor)
+            detailValueLabel.topAnchor.constraint(equalTo: detailSeperator.bottomAnchor, constant: 8),
+            detailValueLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            detailValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            detailValueLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
