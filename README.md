@@ -47,6 +47,8 @@ When I initially set the actions for the SegmentControlBar states, I realized th
 - TabBar hides the bottom of the TableView on ForecastVC
 
 ## Future Improvements
+- Create a ViewModel for the AWConditionsVC to format the data, and deal with the optional values differently
+  - Improves legibility, testability, and scalability
 - Combine Search and Recents views
 - Create skeleton cells for loading state
 - Display full airport name in title
