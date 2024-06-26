@@ -25,7 +25,7 @@ class AWConditionDetailView: UIView {
     }
     
     
-    init(title: String, value: String) {
+    init(title: String, value: String = "") {
         super.init(frame: .zero)
         detailTitle.text = title
         detailValue.text = value
