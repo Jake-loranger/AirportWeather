@@ -28,7 +28,7 @@ class AWConditionViewModel {
     
     var latString: String {
         if let lat = self.weatherReport.report.conditions?.lat {
-            return String(format: "%.6f", lat)
+            return String(format: "%.14f", lat)
         } else {
             return "N/A"
         }
@@ -37,7 +37,7 @@ class AWConditionViewModel {
     
     var lonString: String {
         if let lon = self.weatherReport.report.conditions?.lon {
-            return String(format: "%.6f", lon)
+            return String(format: "%.14f", lon)
         } else {
             return "N/A"
         }

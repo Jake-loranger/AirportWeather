@@ -30,7 +30,19 @@
 		A19028842C2255BD007C3644 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028832C2255BD007C3644 /* String+Ext.swift */; };
 		A190288A2C2368B0007C3644 /* AWForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19028892C2368B0007C3644 /* AWForecastCell.swift */; };
 		A1CBF3E42C2C9DDA0063A617 /* AWConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBF3E32C2C9DDA0063A617 /* AWConditionViewModel.swift */; };
+		A1CBF3EC2C2DF2050063A617 /* AirportWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBF3EB2C2DF2050063A617 /* AirportWeatherTests.swift */; };
+		A1CBF3F32C2DF4570063A617 /* AWConditionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CBF3F22C2DF4570063A617 /* AWConditionViewModelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1CBF3ED2C2DF2050063A617 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A190283A2C20B9FD007C3644 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A19028412C20B9FD007C3644;
+			remoteInfo = AirportWeather;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A19028422C20B9FD007C3644 /* AirportWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirportWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,10 +70,20 @@
 		A19028832C2255BD007C3644 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		A19028892C2368B0007C3644 /* AWForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWForecastCell.swift; sourceTree = "<group>"; };
 		A1CBF3E32C2C9DDA0063A617 /* AWConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionViewModel.swift; sourceTree = "<group>"; };
+		A1CBF3E92C2DF2050063A617 /* AirportWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1CBF3EB2C2DF2050063A617 /* AirportWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportWeatherTests.swift; sourceTree = "<group>"; };
+		A1CBF3F22C2DF4570063A617 /* AWConditionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWConditionViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A190283F2C20B9FD007C3644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1CBF3E62C2DF2050063A617 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				A19028442C20B9FD007C3644 /* AirportWeather */,
+				A1CBF3EA2C2DF2050063A617 /* AirportWeatherTests */,
 				A19028432C20B9FD007C3644 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A19028422C20B9FD007C3644 /* AirportWeather.app */,
+				A1CBF3E92C2DF2050063A617 /* AirportWeatherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +270,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		A1CBF3EA2C2DF2050063A617 /* AirportWeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1CBF3EB2C2DF2050063A617 /* AirportWeatherTests.swift */,
+				A1CBF3F22C2DF4570063A617 /* AWConditionViewModelTests.swift */,
+			);
+			path = AirportWeatherTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -266,6 +299,24 @@
 			productReference = A19028422C20B9FD007C3644 /* AirportWeather.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A1CBF3E82C2DF2050063A617 /* AirportWeatherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1CBF3EF2C2DF2050063A617 /* Build configuration list for PBXNativeTarget "AirportWeatherTests" */;
+			buildPhases = (
+				A1CBF3E52C2DF2050063A617 /* Sources */,
+				A1CBF3E62C2DF2050063A617 /* Frameworks */,
+				A1CBF3E72C2DF2050063A617 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1CBF3EE2C2DF2050063A617 /* PBXTargetDependency */,
+			);
+			name = AirportWeatherTests;
+			productName = AirportWeatherTests;
+			productReference = A1CBF3E92C2DF2050063A617 /* AirportWeatherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -278,6 +329,10 @@
 				TargetAttributes = {
 					A19028412C20B9FD007C3644 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					A1CBF3E82C2DF2050063A617 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = A19028412C20B9FD007C3644;
 					};
 				};
 			};
@@ -295,6 +350,7 @@
 			projectRoot = "";
 			targets = (
 				A19028412C20B9FD007C3644 /* AirportWeather */,
+				A1CBF3E82C2DF2050063A617 /* AirportWeatherTests */,
 			);
 		};
 /* End PBXProject section */
@@ -305,6 +361,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A190284F2C20B9FF007C3644 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1CBF3E72C2DF2050063A617 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +403,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1CBF3E52C2DF2050063A617 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1CBF3F32C2DF4570063A617 /* AWConditionViewModelTests.swift in Sources */,
+				A1CBF3EC2C2DF2050063A617 /* AirportWeatherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1CBF3EE2C2DF2050063A617 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A19028412C20B9FD007C3644 /* AirportWeather */;
+			targetProxy = A1CBF3ED2C2DF2050063A617 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A19028542C20B9FF007C3644 /* Debug */ = {
@@ -515,6 +595,40 @@
 			};
 			name = Release;
 		};
+		A1CBF3F02C2DF2050063A617 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JakeLoranger.AirportWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirportWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AirportWeather";
+			};
+			name = Debug;
+		};
+		A1CBF3F12C2DF2050063A617 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JakeLoranger.AirportWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirportWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AirportWeather";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -532,6 +646,15 @@
 			buildConfigurations = (
 				A19028572C20B9FF007C3644 /* Debug */,
 				A19028582C20B9FF007C3644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1CBF3EF2C2DF2050063A617 /* Build configuration list for PBXNativeTarget "AirportWeatherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1CBF3F02C2DF2050063A617 /* Debug */,
+				A1CBF3F12C2DF2050063A617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
