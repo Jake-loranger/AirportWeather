@@ -39,7 +39,7 @@ class AWDetailsVC: UIViewController {
             switch result {
             case .success(let weatherData):
                 self.weatherReport = weatherData
-                self.saveToRecents(for: self.airportSymbol)
+                self.saveToRecents(for: weatherData.report.conditions?.ident ?? nil)
                 DispatchQueue.main.async {
                     self.showConditionsView()
                 }
@@ -55,7 +55,8 @@ class AWDetailsVC: UIViewController {
     }
     
     
-    private func saveToRecents(for airportSymbol: String) {
+    private func saveToRecents(for airportSymbol: String?) {
+        guard let airportSymbol = airportSymbol?.uppercased() else { return }
         let recentAirport = RecentAirport(airportSymbol: airportSymbol)
         
         PersistanceManager.updateRecentsWith(airportSymbol: recentAirport, actionType: .add) { [weak self] error in
