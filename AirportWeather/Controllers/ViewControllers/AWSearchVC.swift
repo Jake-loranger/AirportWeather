@@ -13,7 +13,7 @@ class AWSearchVC: UIViewController {
     let titleLabel = AWTitleLabel(titleString: "AirportWeather", textAlignment: .center, fontSize: 42)
     let airportTextField = AWSearchTextField(placeholder: "Enter an airport symbol")
     let callToActionButton = AWButton(backgroundColor: .systemGreen, title: "See Weather Details")
-    var isUsernameEntered: Bool { return !airportTextField.text!.isEmpty }
+    var isAirportEntered: Bool { return !airportTextField.text!.isEmpty }
     
     
     override func viewDidLoad() {
@@ -95,7 +95,7 @@ class AWSearchVC: UIViewController {
     
     
     @objc func pushDetailsVC() {
-        guard isUsernameEntered else {
+        guard isAirportEntered else {
             self.presentErrorOnMainThread(title: "Missing Entry", message: "Please input an airport symbol", buttonTitle: "Ok")
             return
         }
