@@ -96,8 +96,7 @@ extension AWRecentsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let recent = recentAirports[indexPath.row]
-        let detailsVC = AWDetailsVC()
-        detailsVC.airportSymbol = recent.airportSymbol
+        let detailsVC = AWDetailsVC(airportSymbol: recent.airportSymbol)
         
         navigationController?.pushViewController(detailsVC, animated: true)
     }

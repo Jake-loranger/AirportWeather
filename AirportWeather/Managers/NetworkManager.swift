@@ -7,11 +7,19 @@
 
 import Foundation
 
+protocol NetworkProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping @Sendable (Data?, URLResponse?, (any Error)?) -> Void) -> URLSessionDataTask
+}
+
+extension URLSession: NetworkProtocol { }
+
 class NetworkManager {
-    static let shared = NetworkManager()
     private let baseUrl = "https://qa.foreflight.com/weather/report/"
+    let networkProtocol: NetworkProtocol
     
-    private init() {}
+    init(protocolSession: NetworkProtocol = URLSession.shared) {
+        self.networkProtocol = protocolSession
+    }
     
     
     func getAirportWeatherData(for airportSymbol: String, completed: @escaping (Result<WeatherReport, AWError>) -> Void) {
@@ -25,7 +33,7 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.addValue("1", forHTTPHeaderField: "ff-coding-exercise")
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = networkProtocol.dataTask(with: request) { data, response, error in
             if let _ = error {
                 completed(.failure(.unableToCompleteRequest))
                 return

@@ -9,11 +9,22 @@ import UIKit
 
 class AWDetailsVC: UIViewController {
     
-    var airportSymbol: String!
+    var airportSymbol: String
     let segmentControlBar = UISegmentedControl()
+    let networkManager = NetworkManager()
     var weatherReport: WeatherReport?
     var conditionsVC: AWConditionVC?
     var forecastVC: AWForecastVC?
+    
+    init(airportSymbol: String) {
+        self.airportSymbol = airportSymbol
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func viewDidLoad() {
@@ -34,7 +45,7 @@ class AWDetailsVC: UIViewController {
     
     
     private func fetchWeatherData(for airportSymbol: String) {
-        NetworkManager.shared.getAirportWeatherData(for: airportSymbol) { [weak self] result in
+        networkManager.getAirportWeatherData(for: airportSymbol) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let weatherData):
