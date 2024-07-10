@@ -10,6 +10,7 @@ import UIKit
 class AWRecentCell: UITableViewCell {
 
     static let reuseID = "AWRecentCell"
+    let networkManager = NetworkManager()
     
     let airportTitle = AWTitleLabel(textAlignment: .left, fontSize: 24)
     let metarLabel = AWTitleLabel(titleString: "METAR: ", textAlignment: .left, fontSize: 14, weight: .semibold)
@@ -40,7 +41,7 @@ class AWRecentCell: UITableViewCell {
     
     
     private func getAirportData(_ airportSymbol: String) {
-        NetworkManager.shared.getAirportWeatherData(for: airportSymbol) { [weak self] result in
+        networkManager.getAirportWeatherData(for: airportSymbol) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
