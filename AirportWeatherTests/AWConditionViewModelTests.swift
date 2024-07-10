@@ -10,7 +10,7 @@ import XCTest
 
 final class AWConditionViewModelTests: XCTestCase {
     
-    var mockReport: WeatherReport!
+    var viewModel: AWConditionViewModel!
     
     override func setUp() {
         super.setUp()
@@ -38,7 +38,8 @@ final class AWConditionViewModelTests: XCTestCase {
             period: Period(dateStart: "2024-06-28T18:00:00+0000", dateEnd: "2024-06-29T18:00:00+0000")
         )
         
-        mockReport = WeatherReport(report: WeatherReport.Report(conditions: mockConditions, forecast: nil))
+        let mockReport = WeatherReport(report: WeatherReport.Report(conditions: mockConditions, forecast: nil))
+        viewModel = AWConditionViewModel(mockReport)
     }
     
     override func tearDown() {
@@ -47,53 +48,42 @@ final class AWConditionViewModelTests: XCTestCase {
     }
     
     func testMetarFormatSuccess() {
-        let viewModel = AWConditionViewModel(self.mockReport)
-        
-        XCTAssertEqual(viewModel.metarString, "METAR KPWM 281851Z 34008KT 310V010 10SM CLR 23/07 A3011 RMK AO2 SLP196 T02280067", "Metar string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.metarString, "METAR KPWM 281851Z 34008KT 310V010 10SM CLR 23/07 A3011 RMK AO2 SLP196 T02280067", "Metar string format given from AWConditionViewModel is incorrect.")
     }
 
     func testLatFormatSuccess() {
-        let viewModel = AWConditionViewModel(self.mockReport)
-        XCTAssertEqual(viewModel.latString, "43.64564403491651", "Lat string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.latString, "43.64564403491651", "Lat string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testLonFormatSuccess() {
-        let viewModel = AWConditionViewModel(self.mockReport)
-        XCTAssertEqual(viewModel.lonString, "-70.30861605624689", "Lat string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.lonString, "-70.30861605624689", "Lat string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testWeatherFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.weatherString, "light rain, mist", "Weather string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.weatherString, "light rain, mist", "Weather string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testTempFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.tempString, "23.0°C", "Temperature string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.tempString, "23.0°C", "Temperature string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testDewFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.dewString, "7.0°C", "Dewpoint string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.dewString, "7.0°C", "Dewpoint string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testHumidityFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.relativeHumidityString, "36%", "Humidity string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.relativeHumidityString, "36%", "Humidity string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testPressureFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.pressureHpaString, "1019.7 hPa", "Pressure string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.pressureHpaString, "1019.7 hPa", "Pressure string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testSkyConditionFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.cloudLayersString, "clr at 0.0ft, bkn at 1000.0ft", "Sky Conditions string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.cloudLayersString, "clr at 0.0ft, bkn at 1000.0ft", "Sky Conditions string format given from AWConditionViewModel is incorrect.")
     }
-    
+
     func testTimeIssuedFormatSuccess() {
-        let viewModel = AWConditionViewModel(mockReport)
-        XCTAssertEqual(viewModel.timeIssued, "Jun-28 18:51 UTC", "Time Issued string format given from AWConditionViewModel is incorrect.")
+        XCTAssertEqual(self.viewModel.timeIssued, "Jun-28 18:51 UTC", "Time Issued string format given from AWConditionViewModel is incorrect.")
     }
 }
