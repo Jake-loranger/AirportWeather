@@ -40,7 +40,7 @@ class NetworkManager {
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.invalidAirportName))
+                completed(.failure(.invalidResponse))
                 return
             }
             
