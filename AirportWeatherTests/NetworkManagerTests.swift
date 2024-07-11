@@ -9,9 +9,16 @@ import XCTest
 @testable import AirportWeather
 
 final class NetworkManagerTests: XCTestCase {
+
+    let mockURLSession = MockURLSession()
     
     override func setUp() {
         super.setUp()
+
+        self.mockURLSession.mockData = nil
+        self.mockURLSession.mockResponse = nil
+        self.mockURLSession.mockError = nil
+
     }
     
     override func tearDown() {
@@ -20,18 +27,17 @@ final class NetworkManagerTests: XCTestCase {
     
     
     func testGetAirportWeatherDataSuccess() {
-        let mockURLSession = MockURLSession()
         
         let mockJSON = """
         {
             "report": {}
         }
         """
-        mockURLSession.mockData = mockJSON.data(using: .utf8)
-        mockURLSession.mockResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-        mockURLSession.mockError = nil
+        self.mockURLSession.mockData = mockJSON.data(using: .utf8)
+        self.mockURLSession.mockResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        self.mockURLSession.mockError = nil
         
-        let mockNetworkManager = NetworkManager(protocolSession: mockURLSession)
+        let mockNetworkManager = NetworkManager(protocolSession: self.mockURLSession)
         
         mockNetworkManager.getAirportWeatherData(for: "") { result in
             switch result {
@@ -44,11 +50,10 @@ final class NetworkManagerTests: XCTestCase {
     }
     
     func testGetAirportWeatherDataInvalidResponse() {
-        let mockURLSession = MockURLSession()
         
-        mockURLSession.mockData = nil
-        mockURLSession.mockResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 404, httpVersion: nil, headerFields: nil)!
-        mockURLSession.mockError = nil
+        self.mockURLSession.mockData = nil
+        self.mockURLSession.mockResponse = HTTPURLResponse(url: URL(string: "www.example.com")!, statusCode: 404, httpVersion: nil, headerFields: nil)!
+        self.mockURLSession.mockError = nil
         
         let mockNetworkManager = NetworkManager(protocolSession: mockURLSession)
         
@@ -58,6 +63,21 @@ final class NetworkManagerTests: XCTestCase {
                 XCTFail("GetAirportWeatherData network call returns an data when it should return an invalidResponse error")
             case .failure(let error):
                 XCTAssertEqual(error.rawValue, "Invalid response from the server. Please try again.")
+            }
+        }
+    }
+
+    func testGetAirportWeatherDataUnableToCompleteRequest() {
+        self.mockURLSession.mockData = nil
+        self.mockURLSession.mockResponse = nil
+        self.mockURLSession.mockError = Error()
+
+        mockNetworkManager.getAirportWeatherData(for: "") { result in
+            switch result {
+                case .success(_): 
+                    XCTFail("GetAirportWeatherData network call returns an data when it should return an unableToCompleteRequest error")
+                case .failure(let error): 
+                    XCTAssertEqual(error.rawValue, "Unable to complete request. Please check your internet connection.")
             }
         }
     }
