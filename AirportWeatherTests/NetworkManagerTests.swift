@@ -14,15 +14,14 @@ final class NetworkManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-
-        self.mockURLSession.mockData = nil
-        self.mockURLSession.mockResponse = nil
-        self.mockURLSession.mockError = nil
-
     }
     
     override func tearDown() {
         super.tearDown()
+
+        self.mockURLSession.mockData = nil
+        self.mockURLSession.mockResponse = nil
+        self.mockURLSession.mockError = nil
     }
     
     
