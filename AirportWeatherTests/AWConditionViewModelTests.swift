@@ -15,7 +15,7 @@ final class AWConditionViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockReport = MockWeatherReport.mockWeatherReport
+        mockReport = MockWeatherReport.mockReport
         viewModel = AWConditionViewModel(self.mockReport)
     }
     

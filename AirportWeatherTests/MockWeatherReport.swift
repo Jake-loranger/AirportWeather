@@ -10,7 +10,7 @@ import Foundation
 
 struct MockWeatherReport {
     
-    static let mockWeatherReport: WeatherReport = WeatherReport(
+    static let mockReport: WeatherReport = WeatherReport(
         report: WeatherReport.Report(
             conditions: mockConditions,
             forecast: mockForecast
